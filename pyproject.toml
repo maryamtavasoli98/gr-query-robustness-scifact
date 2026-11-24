@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gr_query_robustness_scifact"
+version = "0.1.0"
+description = "Query-perturbation robustness of BM25, dense and trie-constrained generative retrieval (SciFact)"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "Maryam Tavasoli" }]
+dependencies = ["numpy>=1.26", "matplotlib>=3.8", "scipy>=1.11", "scikit-learn>=1.4", "rank-bm25>=0.2.2", "torch>=2.2", "sentence-transformers>=3.0"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.5"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+src = ["src", "scripts", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["E501", "B007", "B023", "B905"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
